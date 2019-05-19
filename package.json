@@ -1,6 +1,7 @@
 {
   "name": "modern-trello",
   "version": "0.1.0",
+  "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/modern-trello.umd.production.js",
   "module": "dist/modern-trello.es.production.js",
@@ -9,8 +10,11 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsdx watch",
     "build": "tsdx build",
+    "commit": "git-cz",
+    "prepublishOnly": "yarn build",
+    "semantic-release": "semantic-release",
+    "start": "tsdx watch",
     "test": "tsdx test"
   },
   "peerDependencies": {},
@@ -19,6 +23,18 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevanB/modern-trello.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
@@ -26,10 +42,17 @@
     "trailingComma": "es5"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/github": "^5.2.10",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/jest": "^24.0.13",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "2.1.0",
     "husky": "^2.2.0",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.10.0",
+    "semantic-release": "^15.12.3",
     "tsdx": "^0.5.9",
     "tslib": "^1.9.3",
     "typescript": "^3.4.5"
